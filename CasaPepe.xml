@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CasaPepe.xsl" ?>
+<restaurantmenu>
+	<section name="Starters">
+		<entree>
+			<item>Steamed Mussels in Garlic and Wine Sauce</item>
+			<price>12.00</price>
+		</entree>
+		<entree>
+			<item>Buffalo Mozzarella Caprese</item>
+			<price>8.00</price>
+		</entree>
+		<entree>
+			<item>Salad of The Day</item>
+			<price>8.00</price>
+		</entree>
+		<entree>
+			<item>Minestrone Soup</item>
+			<price>9.00</price>
+		</entree>
+	</section>
+	<section name="Main Courses">
+		<entree>
+			<item>Fresh Fish of The Day</item>
+			<price>19.50</price>
+		</entree>
+		<entree>
+			<item>Chicken Parmigiano</item>
+			<price>16.50</price>
+		</entree>
+		<entree vegetarian="true">
+			<item>Linguine alle Vangole</item>
+			<price>14.55</price>
+		</entree>
+		<entree  vegetarian="true">
+			<item>Gnocchi Pomodoro</item>
+			<price>10.95</price>
+		</entree>
+		<entree vegetarian="true">
+			<item>Vitello Marsala</item>
+			<price>17.95</price>
+		</entree>
+		<entree vegetarian="true">
+			<item>Risotto di Funghi</item>
+			<price>18.00</price>
+		</entree>
+		<entree>
+			<item>Costata di Manzo</item>
+			<price>22.00</price>
+		</entree>
+	</section>
+	<section name="Sides">
+		<entree>
+			<item>Garlic Bread</item>
+			<price>4.85</price>
+		</entree>
+		<entree>
+			<item>Onion Rings</item>
+			<price>3.85</price>
+		</entree>
+		<entree>
+			<item>Fries</item>
+			<price>2.95</price>
+		</entree>
+		<entree>
+			<item>Cheese Fries</item>
+			<price>4.95</price>
+		</entree>
+	</section>
+	<section name="Desserts">
+		<entree>
+			<item>Tiramisu Cheesecake</item>
+			<price>4.95</price>
+		</entree>
+		<entree vegetarian="true">
+			<item>Carrot Cake</item>
+			<price>4.75</price>
+		</entree>
+		<entree>
+			<item>Selection of Ice-Cream</item>
+			<price>4.25</price>
+		</entree>
+	</section>
+</restaurantmenu>
