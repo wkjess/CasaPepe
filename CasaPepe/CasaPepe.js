@@ -1,103 +1,65 @@
-{
-	"restaurantmenu": {
-		"section": [
-			{
-				"entree": [
-					{
-						"item": "Steamed Mussels in Garlic and Wine Sauce",
-						"price": "12.00"
-					},
-					{
-						"item": "Buffalo Mozzarella Caprese",
-						"price": "8.00"
-					},
-					{
-						"item": "Salad of The Day",
-						"price": "8.00"
-					},
-					{
-						"item": "Minestrone Soup",
-						"price": "9.00"
-					}
-				],
-				"_name": "Starters"
-			},
-			{
-				"entree": [
-					{
-						"item": "Fresh Fish of The Day",
-						"price": "19.50"
-					},
-					{
-						"item": "Chicken Parmigiano",
-						"price": "16.50"
-					},
-					{
-						"item": "Linguine alle Vangole",
-						"price": "14.55",
-						"_vegetarian": "true"
-					},
-					{
-						"item": "Gnocchi Pomodoro",
-						"price": "10.95",
-						"_vegetarian": "true"
-					},
-					{
-						"item": "Vitello Marsala",
-						"price": "17.95",
-						"_vegetarian": "true"
-					},
-					{
-						"item": "Risotto di Funghi",
-						"price": "18.00",
-						"_vegetarian": "true"
-					},
-					{
-						"item": "Costata di Manzo",
-						"price": "22.00"
-					}
-				],
-				"_name": "Main Courses"
-			},
-			{
-				"entree": [
-					{
-						"item": "Garlic Bread",
-						"price": "4.85"
-					},
-					{
-						"item": "Onion Rings",
-						"price": "3.85"
-					},
-					{
-						"item": "Fries",
-						"price": "2.95"
-					},
-					{
-						"item": "Cheese Fries",
-						"price": "4.95"
-					}
-				],
-				"_name": "Sides"
-			},
-			{
-				"entree": [
-					{
-						"item": "Tiramisu Cheesecake",
-						"price": "4.95"
-					},
-					{
-						"item": "Carrot Cake",
-						"price": "4.75",
-						"_vegetarian": "true"
-					},
-					{
-						"item": "Selection of Ice-Cream",
-						"price": "4.25"
-					}
-				],
-				"_name": "Desserts"
-			}
-		]
-	}
-}
+var gEntreeCount = 0;
+										// returns a number that represents the sum of all the selected menu
+										// item prices.
+	function calculateBill(idMenuTable) {
+	var fBillTotal = 0.0;
+	var i=0;
+	
+										// find the table tag
+	var oTable = document.getElementById(idMenuTable);
+	
+										// go through the table and add up the prices of all
+										// the selected items. The code takes advantage of the 
+										// fact that each checkbox has a corresponding row in
+										// the table, and the only INPUT tags are the checkboxes.
+	var aCBTags = oTable.getElementsByTagName('INPUT');
+	for (i=0; i < aCBTags.length; i++) {
+										// is this menu item selected? it is if the checkbox is checked
+		if (aCBTags[i].checked) {
+										// get the checkbox' parent table row
+			var oTR = getParentTag(aCBTags[i],'TR');
+			
+										// retrieve the price from the price column, which is the third column in the table
+			var oTDPrice = oTR.getElementsByTagName('TD')[2];
+										// the first child text node of the column contains the price
+			fBillTotal += parseFloat(oTDPrice.firstChild.data);
+		};
+	};
+										// return the price as a decimal number with 2 decimal places
+	return Math.round(fBillTotal*100.0)/100.0;
+	};
+
+										// This function either turns on or off the row highlighting for vegetarian
+										// items (depending on the value of bShowVeg)
+	function highlightVegetarian(idTable, bShowVeg) {
+										// if bShowVeg is true, then we're highlighting vegetarian
+										//	meals, otherwise we're unhighlighting them.
+	var i=0;
+	var oTable = document.getElementById(idTable);
+
+	var oTBODY = oTable.getElementsByTagName('TBODY')[0];
+	var aTRs = oTBODY.getElementsByTagName('TR');
+											// walk through each of the table rows and see if it has a 
+											// "vegetarian" attribute on it.
+	for (i=0; i < aTRs.length; i++) {
+		if (aTRs[i].getAttribute('vegetarian') && aTRs[i].getAttribute('vegetarian') == "true") {
+			if (bShowVeg){
+				aTRs[i].style.backgroundColor = "lightGreen";
+			} else {
+				aTRs[i].style.backgroundColor = "";
+			};
+		};
+	};
+};
+
+											// Utility function for getting the parent tag of a given tag
+											// but only of a certain type (i.e. a TR, a TABLE, etc.)
+	function getParentTag(oNode, sParentType) {
+	var oParent = oNode.parentNode;
+	while (oParent) {
+		if (oParent.nodeName == sParentType)
+			return oParent;
+		oParent = oParent.parentNode;
+	};
+	return oParent;
+};
