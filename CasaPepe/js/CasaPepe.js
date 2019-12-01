@@ -1,7 +1,7 @@
 var gEntreeCount = 0;
 										// returns a number that represents the sum of all the selected menu
 										// item prices.
-	function calculateBill(idMenuTable) {
+function calculateBill(idMenuTable) {
 	var fBillTotal = 0.0;
 	var i=0;
 	
@@ -27,11 +27,11 @@ var gEntreeCount = 0;
 	};
 										// return the price as a decimal number with 2 decimal places
 	return Math.round(fBillTotal*100.0)/100.0;
-	};
+};
 
 										// This function either turns on or off the row highlighting for vegetarian
 										// items (depending on the value of bShowVeg)
-	function highlightVegetarian(idTable, bShowVeg) {
+function highlightVegetarian(idTable, bShowVeg) {
 										// if bShowVeg is true, then we're highlighting vegetarian
 										//	meals, otherwise we're unhighlighting them.
 	var i=0;
@@ -54,7 +54,7 @@ var gEntreeCount = 0;
 
 											// Utility function for getting the parent tag of a given tag
 											// but only of a certain type (i.e. a TR, a TABLE, etc.)
-	function getParentTag(oNode, sParentType) {
+function getParentTag(oNode, sParentType) {
 	var oParent = oNode.parentNode;
 	while (oParent) {
 		if (oParent.nodeName == sParentType)
