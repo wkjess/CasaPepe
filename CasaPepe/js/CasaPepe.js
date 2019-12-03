@@ -44,7 +44,7 @@ function highlightVegetarian(idTable, bShowVeg) {
 	for (i=0; i < aTRs.length; i++) {
 		if (aTRs[i].getAttribute('vegetarian') && aTRs[i].getAttribute('vegetarian') == "true") {
 			if (bShowVeg){
-				aTRs[i].style.backgroundColor = "lightGreen";
+				aTRs[i].style.backgroundColor = "lightblue";
 			} else {
 				aTRs[i].style.backgroundColor = "";
 			};
