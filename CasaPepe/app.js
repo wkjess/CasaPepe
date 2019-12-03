@@ -9,7 +9,7 @@ var http = require('http'),
 var router = express();
 var server = http.createServer(router);
 
-router.use(express.static(path.resolve(__dirname, 'views')));
+router.use(express.static(path.resolve(__dirname, 'CasaPepe')));
 router.use(express.urlencoded({extended: true}));
 router.use(express.json());
 
