@@ -9,7 +9,7 @@ var http = require('http'),
 var router = express(); //The set our routing to be handled by Express
 var server = http.createServer(router); //This is where our server gets created
 
-router.use(express.static(path.resolve(__dirname, 'CasaPepe')));
+router.use(express.static(path.resolve(__dirname, 'views')));
 router.use(express.urlencoded({extended: true}));
 router.use(express.json());
 
