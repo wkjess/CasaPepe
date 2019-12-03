@@ -30,7 +30,7 @@ function jsToXmlFile(filename, obj, cb) {
   fs.writeFile(filepath, xml, cb);
 }
 //We define the root of our website and render index.html located inside the views folder
-router.get('/', function(req, res){
+router.get('/', function(req, res) {
 
     res.render('index');
 
@@ -58,7 +58,7 @@ router.post('/post/json', function(req, res) {
   // Function to read in a JSON file, add to it & convert to XML
   function appendJSON(obj) {
     // Function to read in XML file, convert it to JSON, add a new object and write back to XML file
-    xmlFileToJs('PaddysCafe.xml', function(err, result) {
+    xmlFileToJs('CasaPepe.xml', function(err, result) {
       if (err) throw (err);
       //This is where you pass on information from the form inside index.html in a form of JSON and navigate through our JSON (XML) file to create a new entree object
       result.restaurantmenu.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price}); //If your XML elements are differet, this is where you have to change to your own element names
