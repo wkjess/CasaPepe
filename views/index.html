@@ -12,6 +12,18 @@
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/CasaPepe.css" rel="stylesheet">
+    <script src="js/CasaPepe.js"></script>
+    <script>
+        window.addEventListener("load", function() {
+            document.forms[1].txtBillAmt.value = calculateBill('menuTable');
+            document.querySelector("#calcBill").addEventListener("click", function() {
+                document.forms[1].txtBillAmt.value = calculateBill('menuTable');
+            });
+            document.querySelector("#showVeg").addEventListener("click", function() {
+                highlightVegetarian('menuTable', this.checked);
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -34,7 +46,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-left">
-                <img src="img/casapepe.png" alt="CasaPepe Logo" style="width:500px;height:150px;">
+                <img src="img/casapepe.png" alt="CasaPepe Logo" style="width:450px;height:150px;">
 				<h1 class="mt-5">Welcome to CasaPepe Restaurant</h1>
 				<p class="lead">Select your entrees from the menu below.</p>
 			</div>
