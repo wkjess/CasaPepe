@@ -1,19 +1,18 @@
 // All the codes below from lecturer, Mikhail Timofeev
 
-var http = require('http'), 
-    path = require('path'), 
-    express = require('express'), 
+var http = require('http'),     path = require('path'), 
+    express = require('express'),
     fs = require('fs'), 
     xmlParse = require('xslt-processor').xmlParse, 
     xsltProcess = require('xslt-processor').xsltProcess, 
     xml2js = require('xml2js'); 
 
-var router = express(); //The set our routing to be handled by Express
-var server = http.createServer(router); //This is where our server gets created
+var router = express(); 
+var server = http.createServer(router);
 
-router.use(express.static(path.resolve(__dirname, 'views')));
-router.use(express.urlencoded({extended: true}));
-router.use(express.json());
+router.use(express.static(path.resolve(__dirname, 'views'))); 
+router.use(express.urlencoded({extended: true})); 
+router.use(express.json()); 
 
 // Function to read in XML file and convert it to JSON
 function xmlFileToJs(filename, cb) {
@@ -29,10 +28,11 @@ function jsToXmlFile(filename, obj, cb) {
   var filepath = path.normalize(path.join(__dirname, filename));
   var builder = new xml2js.Builder();
   var xml = builder.buildObject(obj);
+  fs.unlinkSync(filepath);
   fs.writeFile(filepath, xml, cb);
 }
 //We define the root of our website and render index.html located inside the views folder
-router.get('/', function(req, res) {
+router.get('/', function(req, res){
 
     res.render('index');
 
@@ -63,7 +63,7 @@ router.post('/post/json', function(req, res) {
     xmlFileToJs('CasaPepe.xml', function(err, result) {
       if (err) throw (err);
       //This is where you pass on information from the form inside index.html in a form of JSON and navigate through our JSON (XML) file to create a new entree object
-      result.restaurantmenu.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price}); //If your XML elements are differet, this is where you have to change to your own element names
+      result.cafemenu.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price}); //If your XML elements are differet, this is where you have to change to your own element names
       //Converting back to our original XML file from JSON
       jsToXmlFile('CasaPepe.xml', result, function(err) {
         if (err) console.log(err);
@@ -88,7 +88,7 @@ router.post('/post/delete', function(req, res) {
     xmlFileToJs('CasaPepe.xml', function(err, result) {
       if (err) throw (err);
       //This is where we delete the object based on the position of the section and position of the entree, as being passed on from index.html
-      delete result.restaurantmenu.section[obj.section].entree[obj.entree];
+      delete result.cafemenu.section[obj.section].entree[obj.entree];
       //This is where we convert from JSON and write back our XML file
       jsToXmlFile('CasaPepe.xml', result, function(err) {
         if (err) console.log(err);
