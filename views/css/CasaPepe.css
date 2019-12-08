@@ -31,3 +31,7 @@ table, th, td {
  th {
      font-weight: bold;
 }
+.selected {
+    background-color: #dc3545;
+    color: #FFF;
+}

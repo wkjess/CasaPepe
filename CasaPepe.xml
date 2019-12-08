@@ -17,11 +17,7 @@
       <item>Minestrone Soup</item>
       <price>9.00</price>
     </entree>
-    <entree>
-      <item/>
-      <price/>
-    </entree>
-  </section>
+    </section>
   <section name="Main Courses">
     <entree>
       <item>Fresh Fish of The Day</item>
