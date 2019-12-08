@@ -1,4 +1,4 @@
-// All the codes below from lecturer, Mikhail Timofeev
+// All the codes below refer from lecturer, Mikhail Timofeev
 
 function draw_table()
 {
